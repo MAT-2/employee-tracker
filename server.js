@@ -3,10 +3,29 @@ const logo = require("asciiart-logo");
 const config = require("./package.json");
 //importing database from connection.js
 const db = require("./config/connection");
+//importing inquirer
+const inquirer = require("inquirer");
 
 // const PORT = process.env.PORT || 3001;
 
 //Queries
+
+//Beginning Prompts
+function dashboard() {
+  inquirer.prompt({
+    type: "list",
+    message: "Please choose the following options to navigate the dashboard:",
+    name: "decision",
+    choices: [
+      "View ALL departments",
+      "View ALL roles",
+      "View ALL employees",
+      "Add department",
+      "Add new role",
+      "Add new employee",
+    ],
+  });
+}
 
 //Query to show all departments
 function departmentAll() {
@@ -86,16 +105,18 @@ function addRoles() {
 //ASCII ART Logo
 console.log(
   logo({
-    name: "Lords of The Offices",
-    font: "Speed",
+    name: "Lords of Offices",
+    font: "Star Wars",
     linechars: 10,
-    padding: 2,
-    margin: 3,
-    borderColor: "blue",
-    logoColor: "bold-blue",
-    textColor: "blue",
+    padding: 10,
+    margin: 2,
+    borderColor: "yellow",
+    logoColor: "bold-yellow",
+    textColor: "yellow",
   }).render()
 );
+
+dashboard();
 
 // addEmployee();
 // addDepartment();
