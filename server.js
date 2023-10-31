@@ -45,3 +45,23 @@ function employee() {
     console.log(results);
   });
 }
+
+//Query for adding an employee
+//Need to add inquirer within function to ask questions. Then take data and replace values hard coded in the data (i.e. where const data is).
+function addEmployee() {
+  //Start Inquirer first to ask the questions. Then the Inquirer has its own .then, and getting access its own answers. In the .then method, execute the db.query as we created below.
+  const data = ["Tom", "Brady", 2, 1];
+  db.query(
+    "INSERT INTO employee (first_name, last_name, role_id, manager_id)VALUES (?,?,?,?)",
+    data,
+    function (err, results) {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log(results);
+      }
+    }
+  );
+}
+
+addEmployee();
