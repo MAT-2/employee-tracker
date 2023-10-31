@@ -31,6 +31,12 @@ function dashboard() {
         case "View ALL departments":
           departmentAll();
           break;
+        case "View ALL roles":
+          rolesAll();
+          break;
+        case "View ALL employees":
+          employee();
+          break;
       }
     });
 }
