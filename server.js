@@ -50,7 +50,8 @@ function departmentAll() {
     if (err) {
       console.log(err);
     } else {
-      console.log(results);
+      //console.table() shows the console.log() as a table format.
+      console.table(results);
     }
   });
 }
@@ -58,14 +59,14 @@ function departmentAll() {
 //Query for viewing all roles
 function rolesAll() {
   db.query("SELECT * FROM roles", function (err, results) {
-    console.log(results);
+    console.table(results);
   });
 }
 
 //Query for viewing all employee
 function employee() {
   db.query("SELECT * FROM employee", function (err, results) {
-    console.log(results);
+    console.table(results);
   });
 }
 
@@ -98,7 +99,8 @@ function addEmployee() {
     ])
     .then((data) => {
       db.query(
-        "INSERT INTO employee (first_name, last_name, role_id, manager_id)VALUES (?,?,?,?)",
+        //Make sure that in Values() parentheses, it is only 1 ?, not 3 more.
+        "INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES (?)",
         data,
         function (err, results) {
           if (err) {
