@@ -100,7 +100,7 @@ function addEmployee() {
     .then((data) => {
       db.query(
         //Make sure that in Values() parentheses, it is only 1 ?, not 3 more.
-        "INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES (?)",
+        `INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES ("${data.first_name}","${data.last_name}","${data.role_id}","${data.manager_id}")`,
         data,
         function (err, results) {
           if (err) {

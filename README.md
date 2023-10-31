@@ -17,6 +17,7 @@ A backend project creating an employee tracker system within the terminal.
 - https://www.digitalocean.com/community/tutorials/nodejs-interactive-command-line-prompts
 - https://www.digitalocean.com/community/tutorials/how-to-use-the-switch-statement-in-javascript
 - https://developer.mozilla.org/en-US/docs/Web/API/console/table
+- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals
 
 ## License
 
