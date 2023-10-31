@@ -12,6 +12,11 @@ A backend project creating an employee tracker system within the terminal.
 - npm: https://nodejs.org/en
 - ASCIART-LOGO v.0.2.7: https://www.npmjs.com/package/asciiart-logo
 
+## Resources
+
+- https://www.digitalocean.com/community/tutorials/nodejs-interactive-command-line-prompts
+- https://www.digitalocean.com/community/tutorials/how-to-use-the-switch-statement-in-javascript
+
 ## License
 
 Refer to LICENSE

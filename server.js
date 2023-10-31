@@ -12,19 +12,27 @@ const inquirer = require("inquirer");
 
 //Beginning Prompts
 function dashboard() {
-  inquirer.prompt({
-    type: "list",
-    message: "Please choose the following options to navigate the dashboard:",
-    name: "decision",
-    choices: [
-      "View ALL departments",
-      "View ALL roles",
-      "View ALL employees",
-      "Add department",
-      "Add new role",
-      "Add new employee",
-    ],
-  });
+  inquirer
+    .prompt({
+      type: "list",
+      message: "Please choose the following options to navigate the dashboard:",
+      name: "decision",
+      choices: [
+        "View ALL departments",
+        "View ALL roles",
+        "View ALL employees",
+        "Add department",
+        "Add new role",
+        "Add new employee",
+      ],
+    })
+    .then((choice) => {
+      switch (choice.decision) {
+        case "View ALL departments":
+          departmentAll();
+          break;
+      }
+    });
 }
 
 //Query to show all departments
