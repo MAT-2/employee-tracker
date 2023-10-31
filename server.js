@@ -21,9 +21,9 @@ function dashboard() {
         "View ALL departments",
         "View ALL roles",
         "View ALL employees",
+        "Add new employee",
         "Add department",
         "Add new role",
-        "Add new employee",
       ],
     })
     .then((choice) => {
@@ -36,6 +36,9 @@ function dashboard() {
           break;
         case "View ALL employees":
           employee();
+          break;
+        case "Add new employee":
+          addEmployee();
           break;
       }
     });
@@ -70,18 +73,42 @@ function employee() {
 //Need to add inquirer within function to ask questions. Then take data and replace values hard coded in the data (i.e. where const data is).
 function addEmployee() {
   //Start Inquirer first to ask the questions. Then the Inquirer has its own .then, and getting access its own answers. In the .then method, execute the db.query as we created below.
-  const data = ["Tom", "Brady", 2, 1];
-  db.query(
-    "INSERT INTO employee (first_name, last_name, role_id, manager_id)VALUES (?,?,?,?)",
-    data,
-    function (err, results) {
-      if (err) {
-        console.log(err);
-      } else {
-        console.log(results);
-      }
-    }
-  );
+  inquirer
+    .prompt([
+      {
+        type: "input",
+        message: "What is the first name of the employee?",
+        name: "first_name",
+      },
+      {
+        type: "input",
+        message: "What is the last name of the employee?",
+        name: "last_name",
+      },
+      {
+        type: "number",
+        message: "What is the role ID of the employee?",
+        name: "role_id",
+      },
+      {
+        type: "number",
+        message: "What is the manager ID of the employee if applicable?",
+        name: "manager_id",
+      },
+    ])
+    .then((data) => {
+      db.query(
+        "INSERT INTO employee (first_name, last_name, role_id, manager_id)VALUES (?,?,?,?)",
+        data,
+        function (err, results) {
+          if (err) {
+            console.log(err);
+          } else {
+            console.log(results);
+          }
+        }
+      );
+    });
 }
 
 function addDepartment() {
