@@ -64,4 +64,38 @@ function addEmployee() {
   );
 }
 
+function addDepartment() {
+  //Start Inquirer first to ask the questions. Then the Inquirer has its own .then, and getting access its own answers. In the .then method, execute the db.query as we created below.
+  const data = ["Technology"];
+  db.query(
+    "INSERT INTO department (department_name)VALUES (?)",
+    data,
+    function (err, results) {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log(results);
+      }
+    }
+  );
+}
+
+function addRoles() {
+  //Start Inquirer first to ask the questions. Then the Inquirer has its own .then, and getting access its own answers. In the .then method, execute the db.query as we created below.
+  const data = ["Janitor", 50000, 8];
+  db.query(
+    "INSERT INTO roles (title, salary, department_id)VALUES (?,?,?)",
+    data,
+    function (err, results) {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log(results);
+      }
+    }
+  );
+}
+
 addEmployee();
+addDepartment();
+addRoles();
