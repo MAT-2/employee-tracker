@@ -1,23 +1,10 @@
-// const express = require("express");
+//importing the asciiart functionality into terminal
+const logo = require("asciiart-logo");
+const config = require("./package.json");
+//importing database from connection.js
 const db = require("./config/connection");
-// const mysql = require("mysql2");
 
 // const PORT = process.env.PORT || 3001;
-// const app = express();
-
-// app.use(express.urlencoded({ extended: false }));
-// app.use(express.json());
-
-//DB connection
-// const db = mysql.createConnection(
-//   {
-//     host: process.env.DB_HOST,
-//     user: process.env.DB_USER,
-//     password: process.env.DB_PASSWORD,
-//     database: process.env.DB_NAME,
-//   },
-//   console.log(`Connected to employee database`)
-// );
 
 //Queries
 
@@ -96,6 +83,20 @@ function addRoles() {
   );
 }
 
-addEmployee();
-addDepartment();
-addRoles();
+//ASCII ART Logo
+console.log(
+  logo({
+    name: "Lords of The Offices",
+    font: "Speed",
+    linechars: 10,
+    padding: 2,
+    margin: 3,
+    borderColor: "blue",
+    logoColor: "bold-blue",
+    textColor: "blue",
+  }).render()
+);
+
+// addEmployee();
+// addDepartment();
+// addRoles();

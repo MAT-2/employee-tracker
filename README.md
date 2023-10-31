@@ -10,6 +10,7 @@ A backend project creating an employee tracker system within the terminal.
 - dotenv v.16.3.1: https://www.npmjs.com/package/dotenv
 - Squelize v.6.3.5: https://sequelize.org/
 - npm: https://nodejs.org/en
+- ASCIART-LOGO v.0.2.7: https://www.npmjs.com/package/asciiart-logo
 
 ## License
 
