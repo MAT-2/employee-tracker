@@ -24,3 +24,4 @@ A backend project creating an employee tracker system within the terminal. It wa
 Refer to LICENSE
 
 ## Video to Link
+https://drive.google.com/file/d/1mHX7H3CXkjBFMS4lvfKSJ0biXeIWpd9H/view
