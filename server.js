@@ -6,10 +6,6 @@ const db = require("./config/connection");
 //importing inquirer
 const inquirer = require("inquirer");
 
-// const PORT = process.env.PORT || 3001;
-
-//Queries
-
 //Beginning Prompts
 function dashboard() {
   inquirer
@@ -40,9 +36,17 @@ function dashboard() {
         case "Add new employee":
           addEmployee();
           break;
+        case "Add department":
+          addDepartment();
+          break;
+        case "Add new role":
+          addRoles();
+          break;
       }
     });
 }
+
+//Queries
 
 //Query to show all departments
 function departmentAll() {
@@ -52,6 +56,7 @@ function departmentAll() {
     } else {
       //console.table() shows the console.log() as a table format.
       console.table(results);
+      dashboard();
     }
   });
 }
@@ -60,6 +65,7 @@ function departmentAll() {
 function rolesAll() {
   db.query("SELECT * FROM roles", function (err, results) {
     console.table(results);
+    dashboard();
   });
 }
 
@@ -67,6 +73,7 @@ function rolesAll() {
 function employee() {
   db.query("SELECT * FROM employee", function (err, results) {
     console.table(results);
+    dashboard();
   });
 }
 
@@ -107,6 +114,7 @@ function addEmployee() {
             console.log(err);
           } else {
             console.log(results);
+            dashboard();
           }
         }
       );
@@ -115,34 +123,64 @@ function addEmployee() {
 
 function addDepartment() {
   //Start Inquirer first to ask the questions. Then the Inquirer has its own .then, and getting access its own answers. In the .then method, execute the db.query as we created below.
-  const data = ["Technology"];
-  db.query(
-    "INSERT INTO department (department_name)VALUES (?)",
-    data,
-    function (err, results) {
-      if (err) {
-        console.log(err);
-      } else {
-        console.log(results);
-      }
-    }
-  );
+  inquirer
+    .prompt([
+      {
+        type: "input",
+        message: "What is the name of the department you want to add?",
+        name: "department_name",
+      },
+    ])
+    .then((data) => {
+      db.query(
+        `INSERT INTO department (department_name)VALUES ("${data.department_name}")`,
+        data,
+        function (err, results) {
+          if (err) {
+            console.log(err);
+          } else {
+            console.log(results);
+            dashboard();
+          }
+        }
+      );
+    });
 }
 
 function addRoles() {
   //Start Inquirer first to ask the questions. Then the Inquirer has its own .then, and getting access its own answers. In the .then method, execute the db.query as we created below.
-  const data = ["Janitor", 50000, 8];
-  db.query(
-    "INSERT INTO roles (title, salary, department_id)VALUES (?,?,?)",
-    data,
-    function (err, results) {
-      if (err) {
-        console.log(err);
-      } else {
-        console.log(results);
-      }
-    }
-  );
+  inquirer
+    .prompt([
+      {
+        type: "input",
+        message: "What is the title of the role you want to add?",
+        name: "title",
+      },
+      {
+        type: "number",
+        message: "How much does the salary pay for this role?",
+        name: "salary",
+      },
+      {
+        type: "number",
+        message: "What department is this role related to?",
+        name: "department_id",
+      },
+    ])
+    .then((data) => {
+      db.query(
+        `INSERT INTO roles (title, salary, department_id)VALUES ("${data.title}","${data.salary}","${data.department_id}")`,
+        data,
+        function (err, results) {
+          if (err) {
+            console.log(err);
+          } else {
+            console.log(results);
+            dashboard();
+          }
+        }
+      );
+    });
 }
 
 //ASCII ART Logo

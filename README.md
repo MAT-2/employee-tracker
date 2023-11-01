@@ -1,6 +1,6 @@
-# employee-tracker
+# Description
 
-A backend project creating an employee tracker system within the terminal.
+A backend project creating an employee tracker system within the terminal. It was fun being creative with using ASCII Art for the logo, and being able to create databases based on Inquirer prompt options and using switch cases to make choosing between options intuitive. The only difficulty was using SQL syntax to format the tables to connect between each other.
 
 ## Installation
 
@@ -22,3 +22,5 @@ A backend project creating an employee tracker system within the terminal.
 ## License
 
 Refer to LICENSE
+
+## Video to Link
