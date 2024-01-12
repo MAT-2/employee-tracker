@@ -21,16 +21,16 @@ A backend project creating an employee tracker system within the terminal. It wa
 - ASCIART-LOGO v.0.2.7: https://www.npmjs.com/package/asciiart-logo
 
 ## User Story
-``
+````
 AS a back-end software developer
 I WANT to create an employee tracker system within a terminal
 SO THAT I can track employees and make updates as needed
-``
+````
 
 
 ## Acceptance Criteria
 
-``
+````
 GIVEN a back-end employee tracker application
 WHEN I open the terminal
 THEN I am presented the employee tracker logo and a list of options to choose
@@ -46,7 +46,7 @@ WHEN I select the option to ADD NEW DEPARTMENT
 THEN I am given a prompt to fill in the details provided such as ID and DEPARTMENT NAME
 WHEN I select the option to ADD NEW ROLE
 THEN I am given a prompt to fill in the details provided such as ID, TITLE, SALARY, and DEPARTMENT ID
-``
+````
 
 ## Technologies Used
 1. Node.JS
